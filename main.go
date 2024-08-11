@@ -1,7 +1,6 @@
 package main
 
 import (
-	"log"
 	"errors"
 	"net/http"
 
@@ -74,11 +73,8 @@ func getTodoIndexById(id string) (int, error) {
 func updateTodo(context *gin.Context) {
 	id := context.Param("id")
 
-	log.Println("id", id)
-
 	todoIndex, err := getTodoIndexById(id)
 	todo := &todos[todoIndex]
-	log.Println("todo", todo, todoIndex);
 	if err != nil {
 		context.JSON(http.StatusNotFound, gin.H{"message": "Todo not found"})
 		return
