@@ -22,6 +22,10 @@ var todos = []todo{
 func main() {
 	router := gin.Default()
 
+	router.GET("", func(context *gin.Context) {
+		context.JSON(http.StatusOK, "Welcome to Go!")
+	})
+
 	router.GET("/todos", getTodos)
 	router.GET("/todos/:id", getTodo)
 	router.POST("/todos", addTodo)
